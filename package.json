@@ -18,7 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.4.7",
-    "joi": "^10.2.0",
+    "joi": "^10.2.1",
     "joi-date-extensions": "^1.0.1",
     "ramda": "^0.23.0",
     "swagger-parser": "^3.4.1"
