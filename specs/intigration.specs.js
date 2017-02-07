@@ -101,4 +101,38 @@ describe('Handlers registrations are intercepted and altered', () => {
 			expect(res.statusCode).to.equal(500);
 		});
 	});
+
+	describe('validation_override', () => {
+		it('can override single "payload" validation properties', async () => {
+			const res = await svc.test.put('/validation_override/2')
+				.send({
+					description: 'test',
+				});
+			expect(res.statusCode).to.equal(200);
+		});
+
+		it('other validation keys are unchanged', async () => {
+			const res = await svc.test.put('/validation_override/3')
+				.send({ });
+			expect(res.statusCode).to.equal(400);
+		});
+
+		it('can override "query" validation properties', async () => {
+			const res = await svc.test.put('/validation_override/2?page=test')
+				.send({
+					name: 'test',
+					description: 'test',
+				});
+			expect(res.statusCode).to.equal(200);
+		});
+
+		it('can override "params" validation properties', async () => {
+			const res = await svc.test.put('/validation_override/string')
+				.send({
+					name: 'test',
+					description: 'test',
+				});
+			expect(res.statusCode).to.equal(200);
+		});
+	});
 });

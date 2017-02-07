@@ -500,6 +500,31 @@ paths:
           schema:
             $ref: '#/definitions/TestResponse'
 
+  /validation_override/{id}:
+    put:
+      parameters:
+        - in: path
+          name: id
+          type: number
+        - in: query
+          name: page
+          type: number
+        - in: body
+          name: body
+          schema:
+            properties:
+              name:
+                type: string
+                required: true
+              description:
+                type: string
+                required: true
+
+      responses:
+        200:
+          description: default response
+
+
   /array_of_object_response:
     get:
       parameters:
