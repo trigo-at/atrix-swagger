@@ -1,0 +1,19 @@
+version: '2'
+services:
+  atrix-swagger:
+    build:
+      context: .
+      args:
+        - NPM_TOKEN=${NPM_TOKEN}
+    image: trigo/atrix-swagger:latest
+    command: 'yarn run test'
+    environment:
+      - NODE_ENV=test
+      - NPM_TOKEN
+      - I_WANT_TEST_LOGGING=1
+    networks:
+      - atrix-swagger_test
+
+networks:
+  atrix-swagger_test:
+    driver: bridge

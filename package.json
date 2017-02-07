@@ -1,0 +1,39 @@
+{
+  "name": "@trigo/atrix-swagger",
+  "version": "0.3.1",
+  "config": {
+    "loadOnStart": true
+  },
+  "description": "Swagger API Language intigration ",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha --timeout 30000 --harmony-async-await $(find . -name '*.specs.js' -not -path './node_modules/*')",
+    "lint": "eslint lib specs"
+  },
+  "keywords": [
+    "atrix",
+    "swagger"
+  ],
+  "author": "Christian Hubinger <christian@trigo.at>",
+  "license": "ISC",
+  "dependencies": {
+    "@trigo/atrix": "^0.4.0",
+    "@trigo/eslint-config-trigo": "^3.2.0",
+    "bluebird": "^3.4.7",
+    "joi": "^10.2.0",
+    "joi-date-extensions": "^1.0.1",
+    "ramda": "^0.23.0",
+    "supertest": "^3.0.0",
+    "swagger-parser": "^3.4.1",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-mocha": "^4.8.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0"
+  }
+}
