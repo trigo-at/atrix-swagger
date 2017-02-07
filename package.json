@@ -17,23 +17,23 @@
   "author": "Christian Hubinger <christian@trigo.at>",
   "license": "ISC",
   "dependencies": {
-    "@trigo/atrix": "^0.4.0",
-    "@trigo/eslint-config-trigo": "^3.2.0",
     "bluebird": "^3.4.7",
     "joi": "^10.2.0",
     "joi-date-extensions": "^1.0.1",
     "ramda": "^0.23.0",
-    "supertest": "^3.0.0",
-    "swagger-parser": "^3.4.1",
-    "uuid": "^3.0.1"
+    "swagger-parser": "^3.4.1"
   },
   "devDependencies": {
+    "@trigo/atrix": "^0.4.0",
+    "@trigo/eslint-config-trigo": "^3.2.0",
     "chai": "^3.5.0",
     "eslint": "^3.13.1",
     "eslint-config-airbnb-base": "^11.0.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-mocha": "^4.8.0",
     "mocha": "^3.2.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "supertest": "^3.0.0",
+    "uuid": "^3.0.1"
   }
 }
