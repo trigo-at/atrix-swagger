@@ -1,2 +1,2 @@
-FROM trigo/node-base:7.5-yarn-lib
+FROM trigo/node-base:7.6-yarn-lib
 
