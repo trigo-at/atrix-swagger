@@ -27,7 +27,7 @@
     "swagger-parser": "^3.4.1"
   },
   "devDependencies": {
-    "@trigo/atrix": "^0.5.0",
+    "@trigo/atrix": "^0.6.0",
     "@trigo/eslint-config-trigo": "^3.2.0",
     "chai": "^3.5.0",
     "eslint": "^3.13.1",
