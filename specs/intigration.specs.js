@@ -102,6 +102,18 @@ describe('Handlers registrations are intercepted and altered', () => {
 		});
 	});
 
+	describe('empty array of objects with required properties', () => {
+		it('accepts an empty array', async () => {
+			const res = await svc.test.post('/empty_array_of_objects_with_required_properties')
+				.send({
+					id: 'some_id',
+					objects: [],
+				});
+			expect(res.statusCode).to.equal(200);
+			expect(res.body).to.eql([]);
+		});
+	});
+
 	describe('validation_override', () => {
 		it('can override single "payload" validation properties', async () => {
 			const res = await svc.test.put('/validation_override/2')
