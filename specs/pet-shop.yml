@@ -524,7 +524,6 @@ paths:
         200:
           description: default response
 
-
   /array_of_object_response:
     get:
       parameters:
@@ -538,6 +537,23 @@ paths:
             type: array
             items:
               $ref: '#/definitions/TestResponse'
+
+  /empty_array_of_objects_with_required_properties:
+    post:
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/ObjectWithArrayOfObjectsWithRequiredProperties'
+      responses:
+        200:
+          description: empty_array_of_objects_required_properties_response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ObjectWithRequiredProperties'
+
 
 securityDefinitions:
   api_key:
@@ -553,6 +569,24 @@ securityDefinitions:
       read_pets: read your pets
 
 definitions:
+  ObjectWithArrayOfObjectsWithRequiredProperties:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+      objects:
+        type: array
+        items:
+          $ref: '#/definitions/ObjectWithRequiredProperties'
+  ObjectWithRequiredProperties:
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
   TestResponse:
     type: object
     properties:
