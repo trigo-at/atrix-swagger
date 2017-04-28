@@ -44,6 +44,11 @@ describe('Handlers registrations are intercepted and altered', () => {
 				.send({ id: 42, username: 'user' });
 			expect(res.statusCode).to.equal(400);
 		});
+
+		it('allows payload to be optional with required = false', async () => {
+			const res = await svc.test.post('/users');
+			expect(res.statusCode).to.equal(200);
+		});
 	});
 
 	describe('GET /users/login', () => {

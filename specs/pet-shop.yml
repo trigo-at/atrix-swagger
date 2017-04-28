@@ -315,7 +315,7 @@ paths:
         - in: body
           name: body
           description: Created user object
-          required: true
+          required: false
           schema:
             $ref: "#/definitions/User"
       responses:
