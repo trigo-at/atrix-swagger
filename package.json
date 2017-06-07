@@ -21,20 +21,20 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.0",
-    "joi": "^10.3.1",
+    "joi": "^10.5.2",
     "joi-date-extensions": "^1.0.2",
-    "ramda": "^0.23.0",
+    "ramda": "^0.24.1",
     "swagger-parser": "^3.4.1"
   },
   "devDependencies": {
-    "@trigo/atrix": "^0.8.0",
-    "chai": "^3.5.0",
+    "@trigo/atrix": "^0.11.3",
+    "chai": "^4.0.2",
     "eslint": "^3.19.0",
-    "eslint-config-airbnb-base": "^11.1.3",
-    "eslint-config-trigo": "^3.4.0",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-config-trigo": "^4.1.1",
+    "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-mocha": "^4.9.0",
-    "mocha": "^3.2.0",
+    "mocha": "^3.4.2",
     "nodemon": "^1.11.0",
     "supertest": "^3.0.0",
     "uuid": "^3.0.1"

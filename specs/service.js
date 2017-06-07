@@ -14,6 +14,7 @@ const svc = new atrix.Service('s1', {
 		http: {
 			port: 3007,
 			handlerDir: `${__dirname}/handler`,
+			prefix: '/prefix',
 		},
 	},
 });
