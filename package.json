@@ -1,6 +1,6 @@
 {
   "name": "@trigo/atrix-swagger",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "engines": {
     "node": ">=7.6.0"
   },
