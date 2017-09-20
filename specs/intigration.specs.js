@@ -152,4 +152,29 @@ describe('Handlers registrations are intercepted and altered', () => {
 			expect(res.statusCode).to.equal(200);
 		});
 	});
+
+
+	describe('nested referenced schema', () => {
+		it('validates top object', async () => {
+			const res = await svc.test.post('/prefix/nested-referenced-schema')
+				.send({ name: 42 });
+			expect(res.statusCode).to.equal(400);
+		});
+		it('validates top -> nested object', async () => {
+			const res = await svc.test.post('/prefix/nested-referenced-schema')
+				.send({ name: 'test', nested: { name: 42 } });
+			expect(res.statusCode).to.equal(400);
+			const res2 = await svc.test.post('/prefix/nested-referenced-schema')
+				.send({ name: 'test', nested: { } });
+			expect(res2.statusCode).to.equal(400);
+		});
+		it('validates top -> nested -> nested  object', async () => {
+			const res = await svc.test.post('/prefix/nested-referenced-schema')
+				.send({ name: 'test', nested: { name: 'nested', nested: { name: 42 } } });
+			expect(res.statusCode).to.equal(400);
+			const res2 = await svc.test.post('/prefix/nested-referenced-schema')
+				.send({ name: 'test', nested: { name: 'nested', nested: { } } });
+			expect(res2.statusCode).to.equal(400);
+		});
+	});
 });

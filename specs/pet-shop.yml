@@ -554,6 +554,19 @@ paths:
             items:
               $ref: '#/definitions/ObjectWithRequiredProperties'
 
+  /nested-referenced-schema:
+    post:
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/TopObj'
+      responses:
+        200:
+          description: Ok
+        400:
+          description: Bad Request
 
 securityDefinitions:
   api_key:
@@ -569,6 +582,37 @@ securityDefinitions:
       read_pets: read your pets
 
 definitions:
+  TopObj:
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
+      nested:
+        type: object
+        schema:
+          $ref: '#/definitions/NestedObj'
+  NestedObj:
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
+      nested:
+        type: object
+        schema:
+          $ref: '#/definitions/NestedNestedObj'
+  NestedNestedObj:
+    type: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
+      nested:
+        type: object
   ObjectWithArrayOfObjectsWithRequiredProperties:
     type: object
     required:
