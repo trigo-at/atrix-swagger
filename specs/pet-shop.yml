@@ -568,6 +568,18 @@ paths:
         400:
           description: Bad Request
 
+  /can-omit-type:
+    get:
+      parameters:
+        - in: body
+          name: body
+          required: true
+          type: object
+          parameters:
+            nested:
+              schema:
+                $ref: '#/definitions/TopObj'
+
 securityDefinitions:
   api_key:
     type: apiKey
