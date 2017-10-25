@@ -27,7 +27,7 @@
     "swagger-parser": "^3.4.1"
   },
   "devDependencies": {
-    "@trigo/atrix": "^0.11.5",
+    "@trigo/atrix": "^1.2.0",
     "chai": "^4.0.2",
     "eslint": "^4.0.0",
     "eslint-config-airbnb-base": "^11.2.0",
