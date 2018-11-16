@@ -580,6 +580,21 @@ paths:
               schema:
                 $ref: '#/definitions/TopObj'
 
+  /supports-header-validation:
+    get:
+      parameters:
+        - in: query
+          name: fail
+          type: boolean
+        - in: header
+          name: x-test-header-required
+          type: string
+          required: true
+        - in: header
+          name: x-test-header-optional
+          type: number
+          required: false
+
 securityDefinitions:
   api_key:
     type: apiKey

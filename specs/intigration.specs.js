@@ -177,4 +177,33 @@ describe('Handlers registrations are intercepted and altered', () => {
 			expect(res2.statusCode).to.equal(400);
 		});
 	});
+
+	describe('header validation', () => {
+		it('validates required headers', async () => {
+			let res = await svc.test.get('/prefix/supports-header-validation')
+				.set({ 'x-test-header-optional': 'test' });
+			expect(res.statusCode).to.equal(400);
+			expect(res.body.message).to.contain('"x-test-header-required" is required');
+			res = await svc.test.get('/prefix/supports-header-validation')
+				.set({ 'x-test-header-required': 'test' });
+			expect(res.statusCode).to.equal(200);
+		});
+		it('validates header type', async () => {
+			const res = await svc.test.get('/prefix/supports-header-validation')
+				.set({ 'x-test-header-required': 'test', 'x-test-header-optional': 'foobar' });
+			expect(res.statusCode).to.equal(400);
+			expect(res.body.message).to.contain('"x-test-header-optional" must be a number');
+		});
+		it('ingores unknown headers', async () => {
+			const res = await svc.test.get('/prefix/supports-header-validation')
+				.set({ 'x-test-header-required': 'test', 'x-test-header-asdf': 'foo' });
+			expect(res.statusCode).to.equal(200);
+		});
+		it('unknown headers are available in req.headers', async () => {
+			const res = await svc.test.get('/prefix/supports-header-validation')
+				.set({ 'x-test-header-required': 'test', 'x-test-header-asdf': 'foo' });
+			expect(res.statusCode).to.equal(200);
+			expect(res.body.headers['x-test-header-asdf']).to.eql('foo');
+		});
+	});
 });
