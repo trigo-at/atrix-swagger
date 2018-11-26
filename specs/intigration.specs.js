@@ -206,4 +206,33 @@ describe('Handlers registrations are intercepted and altered', () => {
 			expect(res.body.headers['x-test-header-asdf']).to.eql('foo');
 		});
 	});
+
+	describe('typeless parameters/schemas', () => {
+		['test', 0, true].forEach((v) => {
+			it(`can omit type in main parametes list send ?typless=${typeof v === 'object' ? JSON.stringify(v) : v}`, async () => {
+				const res = await svc.test.get(`/prefix/typeless?typeless=${v}`);
+				expect(res.statusCode).to.eql(200);
+			});
+		});
+
+		['test', 0, { test: 'obj' }].forEach((v) => {
+			it(`can omit type in body schema send ${typeof v === 'object' ? JSON.stringify(v) : v}`, async () => {
+				const res = await svc.test.post('/prefix/typeless').send(v);
+				expect(res.statusCode).to.eql(200);
+			});
+		});
+
+		['test', 0, { test: 'obj' }].forEach((v) => {
+			it(`can omit type in body schema send ${typeof v === 'object' ? JSON.stringify(v) : v}`, async () => {
+				const res = await svc.test.put('/prefix/typeless').send({ typeless: v, 'typeless-required': 'sdf' });
+				expect(res.statusCode).to.eql(200);
+			});
+
+			it(`Typless parameters ca be marked as required. Sending ${typeof v === 'object' ? JSON.stringify(v) : v}`, async () => {
+				const res = await svc.test.put('/prefix/typeless').send({ typeless: v });
+				expect(res.statusCode).to.eql(400);
+				expect(res.body.message).to.contain('"typeless-required" is required');
+			});
+		});
+	});
 });

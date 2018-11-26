@@ -595,6 +595,27 @@ paths:
           type: number
           required: false
 
+  /typeless:
+    get:
+      parameters:
+        - in: query
+          name: typeless
+    post:
+      parameters:
+        - in: body
+          name: body
+    put:
+      parameters:
+        - in: body
+          name: body
+          schema:
+            type: object
+            required:
+              - typeless-required
+            properties:
+              typeless:
+              typeless-required:
+
 securityDefinitions:
   api_key:
     type: apiKey
