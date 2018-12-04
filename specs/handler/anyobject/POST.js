@@ -1,3 +1,3 @@
 module.exports = (req, reply) => {
-	reply(req.payload);
+    reply(req.payload);
 };

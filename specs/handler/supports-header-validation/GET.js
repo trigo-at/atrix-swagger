@@ -1,1 +1,1 @@
-module.exports = (req, reply) => reply({ status: 'ok', headers: req.headers });
+module.exports = (req, reply) => reply({status: 'ok', headers: req.headers});

@@ -11,12 +11,21 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test mocha --timeout 30000 $(find . -name '*.specs.js' -not -path './node_modules/*')",
-    "lint": "eslint lib specs"
+    "lint": "eslint lib specs",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "precommit": "lint-staged",
+    "prettify": "prettier --write '**/*.{js,jsx}'"
   },
   "keywords": [
     "atrix",
     "swagger"
   ],
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier",
+      "git add"
+    ]
+  },
   "author": "Christian Hubinger <christian@trigo.at>",
   "license": "ISC",
   "dependencies": {
@@ -29,13 +38,16 @@
   "devDependencies": {
     "@trigo/atrix": "^6.0.0-7",
     "chai": "^4.0.2",
-    "eslint": "^4.0.0",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-config-trigo": "^4.1.1",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-mocha": "^4.10.1",
-    "mocha": "^3.4.2",
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-trigo": "^6.2.0",
+    "eslint-plugin-mocha": "^5.2.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
+    "mocha": "^5.2.0",
     "nodemon": "^1.11.0",
+    "prettier": "^1.15.3",
     "supertest": "^3.0.0",
     "uuid": "^3.1.0"
   }

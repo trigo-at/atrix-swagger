@@ -1,1 +1,1 @@
-module.exports = (req, reply) => reply({ ok: true });
+module.exports = (req, reply) => reply({ok: true});

@@ -1,4 +1,5 @@
-module.exports = (req, reply) => reply({
-	username: 'user',
-	id: 42,
-});
+module.exports = (req, reply) =>
+    reply({
+        username: 'user',
+        id: 42,
+    });
