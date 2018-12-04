@@ -6,8 +6,7 @@
 const { expect } = require('chai');
 const svc = require('./service');
 
-
-describe('Handlers registrations are intercepted and altered', () => {
+describe('Handler registrations are intercepted and altered', () => {
 	before(async () => {
 		await svc.start();
 	});

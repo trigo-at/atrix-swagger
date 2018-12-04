@@ -6,7 +6,8 @@ const supertest = require('supertest');
 
 atrix.configure({ pluginMap: { swagger: path.join(__dirname, '../') } });
 
-const svc = new atrix.Service('s1', {
+const svc = atrix.addService({
+	name: 'svc1',
 	swagger: {
 		serviceDefinition: path.join(__dirname, './pet-shop.yml'),
 	},
@@ -18,8 +19,6 @@ const svc = new atrix.Service('s1', {
 		},
 	},
 });
-atrix.addService(svc);
-svc.endpoints.add('http');
 
 const svcs = {};
 

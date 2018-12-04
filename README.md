@@ -6,6 +6,11 @@
 ## About
 atrix-swagger is a atrix microservice plugin to intigrate swagger.io service decription files into the atrix microservice framework
 
+## Compatibility
+
+`atrix-swagger < 2.0.0` works with `atrix < 6.0.0`
+`atrix-swagger >= 2.0.0` works with `atrix >= 6.0.0`
+
 ## Features
 * Create request & response valisation rules from swagger API spec file
 * serve GET /swagger.json to deliver the service's API spec
@@ -166,7 +171,9 @@ module.exports = (req, reply, service) => {
 const atrix = require('@trigo/atrix');
 const path = require('path');
 
-const svc = new atrix.Service('s1', {
+const svc = atrix.addService({
+	// name of the service
+	name: 'swagger',
 	// declare swagger section
 	swagger: {
 		// let atrix-swagger know where the service API spec file is located
@@ -180,8 +187,6 @@ const svc = new atrix.Service('s1', {
 		},
 	},
 });
-atrix.addService(svc);
-svc.endpoints.add('http');
 svc.start();
 ```
 To get complete parsed Swagger API spec from service as JSON simply use  the /swager.json endpoint
