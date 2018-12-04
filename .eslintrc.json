@@ -4,6 +4,7 @@
     "rules": {
         "no-underscore-dangle": 0,
         "no-confusing-arrow": 0,
-        "prettier/prettier": ["warn"]
+        "prettier/prettier": ["warn"],
+        "prefer-destructuring":0
     }
 }
