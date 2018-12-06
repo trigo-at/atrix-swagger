@@ -176,7 +176,7 @@ describe('Handler registrations are intercepted and altered', () => {
         it('validates required headers', async () => {
             let res = await svc.test.get('/prefix/supports-header-validation').set({'x-test-header-optional': 'test'});
             expect(res.statusCode).to.equal(400);
-            expect(res.body.message).to.contain('"x-test-header-required" is required');
+            expect(res.body.message).to.contain('Invalid request headers input');
             res = await svc.test.get('/prefix/supports-header-validation').set({'x-test-header-required': 'test'});
             expect(res.statusCode).to.equal(200);
         });
@@ -185,7 +185,7 @@ describe('Handler registrations are intercepted and altered', () => {
                 .get('/prefix/supports-header-validation')
                 .set({'x-test-header-required': 'test', 'x-test-header-optional': 'foobar'});
             expect(res.statusCode).to.equal(400);
-            expect(res.body.message).to.contain('"x-test-header-optional" must be a number');
+            expect(res.body.message).to.contain('Invalid request headers input');
         });
         it('ingores unknown headers', async () => {
             const res = await svc.test
@@ -230,7 +230,7 @@ describe('Handler registrations are intercepted and altered', () => {
             }`, async () => {
                 const res = await svc.test.put('/prefix/typeless').send({typeless: v});
                 expect(res.statusCode).to.eql(400);
-                expect(res.body.message).to.contain('"typeless-required" is required');
+                expect(res.body.message).to.contain('Invalid request payload input');
             });
         });
     });

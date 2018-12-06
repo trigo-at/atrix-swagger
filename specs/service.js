@@ -8,6 +8,9 @@ atrix.configure({pluginMap: {swagger: path.join(__dirname, '../')}});
 
 const svc = atrix.addService({
     name: 'svc1',
+    logger: {
+        level: 'debug',
+    },
     swagger: {
         serviceDefinition: path.join(__dirname, './pet-shop.yml'),
     },
