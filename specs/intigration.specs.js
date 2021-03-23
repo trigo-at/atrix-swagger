@@ -4,8 +4,8 @@
 /* eslint no-unused-expressions: 0, arrow-body-style: 0 */
 
 const {expect} = require('chai');
-const svc = require('./service');
 const jwt = require('jsonwebtoken');
+const svc = require('./service');
 
 describe('Handler registrations are intercepted and altered', () => {
     before(async () => {
