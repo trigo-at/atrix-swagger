@@ -21,6 +21,16 @@ const svc = atrix.addService({
             prefix: '/prefix',
         },
     },
+    security: {
+        strategies: {
+            jwt: {
+                secret: 'changeme',
+            },
+        },
+        endpoints: {
+            jwt: ['/swagger.json'],
+        },
+    },
 });
 
 const svcs = {};
@@ -33,8 +43,11 @@ Object.keys(atrix.services).forEach(serviceName => {
 });
 
 module.exports = {
-    service: svc,
-    start: async () => svc.start(),
-    stop: async () => svc.stop(),
+    start: async () => {
+        await svc.start();
+    },
+    stop: async () => {
+        await svc.stop();
+    },
     test: svcs[svc.name],
 };

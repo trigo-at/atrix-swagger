@@ -5,6 +5,7 @@
 
 const {expect} = require('chai');
 const svc = require('./service');
+const jwt = require('jsonwebtoken');
 
 describe('Handler registrations are intercepted and altered', () => {
     before(async () => {
@@ -61,15 +62,6 @@ describe('Handler registrations are intercepted and altered', () => {
         it('HTTP 500 when returns invalid integer', async () => {
             const res = await svc.test.get('/prefix/users/login?username=invalid');
             expect(res.statusCode).to.equal(500);
-        });
-    });
-
-    describe('GET /swagger.json', () => {
-        it('servers swagger API JSON', async () => {
-            const res = await svc.test.get('/prefix/swagger.json');
-            expect(res.statusCode).to.equal(200);
-            expect(res.body.info.title).to.equal('Test based on Swagger Pet Store');
-            expect(res.headers['content-type']).to.contain('application/json');
         });
     });
 
@@ -232,6 +224,22 @@ describe('Handler registrations are intercepted and altered', () => {
                 expect(res.statusCode).to.eql(400);
                 expect(res.body.message).to.contain('Invalid request payload input');
             });
+        });
+    });
+
+    describe('GET /prefix/swagger.json', () => {
+        it('servers swagger API JSON', async () => {
+            const token = jwt.sign({foo: 'bar'}, 'changeme');
+
+            const res = await svc.test.get('/prefix/swagger.json').set({Authorization: `Bearer ${token}`});
+            expect(res.statusCode).to.equal(200);
+            expect(res.body.info.title).to.equal('Test based on Swagger Pet Store');
+            expect(res.headers['content-type']).to.contain('application/json');
+        });
+
+        it('Secured swagger API JSON', async () => {
+            const res = await svc.test.get('/prefix/swagger.json');
+            expect(res.statusCode).to.equal(401);
         });
     });
 });
