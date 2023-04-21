@@ -10,10 +10,17 @@ atrix-swagger is a atrix microservice plugin to intigrate swagger.io service dec
 
 `atrix-swagger < 2.0.0` works with `atrix < 6.0.0`
 `atrix-swagger >= 2.0.0` works with `atrix >= 6.0.0`
+`atrix-swagger >= 3.0.0` works with `atrix >= 7.0.0`
 
 ## Features
 * Create request & response valisation rules from swagger API spec file
 * serve GET /swagger.json to deliver the service's API spec
+
+## Breaking Changes
+
+### 2.x => 3.x
+
+* Removed ability to override certain schema keys in the handler implementation. Make sure to either define your validation using swagger OR using code.
 
 ## Installation
 

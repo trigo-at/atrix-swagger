@@ -9,25 +9,25 @@ info:
 	@echo "Published:             $$(npm show --json @trigo/$(PACKAGE) | jq -r ".versions | join(\", \")")"
 
 install:
-	yarn install
+	npm install
 
 clean:
 	rm -rf node_modules/
 
 test:
-	yarn test
+	npm run test
 
 build: .
 	docker-compose -f docker-compose.test.yml build
 
 lint:
-	yarn lint
+	npm run lint
 
 pretty:
-	yarn prettify
+	npm run prettify
 
 ci-lint: build
-	@docker-compose -f docker-compose.test.yml run --rm $(PACKAGE) yarn lint; \
+	@docker-compose -f docker-compose.test.yml run --rm $(PACKAGE) npm run lint; \
 		test_exit=$$?; \
 		docker-compose -f docker-compose.test.yml down; \
 		exit $$test_exit
