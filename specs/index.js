@@ -1,6 +1,6 @@
 'use strict';
 
-const svc = require('./service.js');
+const svc = require('./service');
 
 const start = async () => {
     await svc.start();
