@@ -1,8 +1,8 @@
 {
   "name": "@trigo/atrix-swagger",
-  "version": "2.1.0",
+  "version": "3.0.0-alpha1",
   "engines": {
-    "node": ">=7.6.0"
+    "node": ">=19.0.0"
   },
   "config": {
     "loadOnStart": true
@@ -29,15 +29,14 @@
   "author": "Christian Hubinger <christian@trigo.at>",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "joi": "^14.3.0",
-    "joi-date-extensions": "^1.0.2",
-    "ramda": "^0.26.1",
-    "swagger-parser": "^6.0.2"
+    "@joi/date": "^2.1.0",
+    "joi": "^17.9.1",
+    "ramda": "^0.29.0",
+    "swagger-parser": "10.0.3"
   },
   "devDependencies": {
-    "@trigo/atrix": "^6.0.0-11",
-    "chai": "^4.0.2",
+    "@trigo/atrix": "^7.0.0-alpha3",
+    "chai": "^4.3.7",
     "eslint": "^5.9.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-trigo": "^6.2.0",
@@ -45,8 +44,8 @@
     "eslint-plugin-prettier": "^3.0.0",
     "husky": "^1.2.0",
     "lint-staged": "^8.1.0",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.11.0",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.22",
     "prettier": "^1.15.3",
     "supertest": "^3.0.0",
     "uuid": "^3.1.0"
