@@ -1,8 +1,8 @@
 {
   "name": "@trigo/atrix-swagger",
-  "version": "3.0.0-alpha1",
+  "version": "3.0.0-alpha2",
   "engines": {
-    "node": ">=19.0.0"
+    "node": ">=18.0.0"
   },
   "config": {
     "loadOnStart": true
